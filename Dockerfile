@@ -1,10 +1,15 @@
-FROM python:2.7-alpine
+FROM 	sinenomine/clefos-base-s390x:latest
 
-COPY ./spark-ui-proxy.py /
+COPY 	./spark-ui-proxy.py /
 
-ENV SERVER_PORT=80
-ENV BIND_ADDR="0.0.0.0"
+RUN	yum upgrade --setopt=tsflags=nodocs -y && \
+	yum install --setopt=tsflags=nodocs -y python && \
+	yum clean all && \
+	rm -rf /var/log/yum.log /tmp/* /var/cache/yum/*
 
-EXPOSE 80
+ENV 	SERVER_PORT=8080
+ENV 	BIND_ADDR="0.0.0.0"
+
+EXPOSE 	8080
 
 ENTRYPOINT ["python", "/spark-ui-proxy.py"]
