@@ -27,7 +27,7 @@ import SocketServer
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
 BIND_ADDR = os.environ.get("BIND_ADDR", "0.0.0.0")
-SERVER_PORT = int(os.environ.get("SERVER_PORT", "80"))
+SERVER_PORT = int(os.environ.get("SERVER_PORT", "8080"))
 URL_PREFIX = os.environ.get("URL_PREFIX", "").rstrip('/') + '/'
 SPARK_MASTER_HOST = ""
 
